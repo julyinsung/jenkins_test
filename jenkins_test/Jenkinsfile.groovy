@@ -1,6 +1,6 @@
 def mvnHome
+
 node {
-   
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/julyinsung/jenkins_test.git'
@@ -11,9 +11,9 @@ node {
    }
 }
 
+stage 'Build'
+input 'Do you approve build?'
 node {
-   stage 'Build'
-   input 'Do you approve build?'
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
@@ -24,18 +24,17 @@ node {
       }
    }
 }
+
+stage 'Junit & PMD'
+input 'Do you approve Junit & PMD?'
 node{
    stage('Junit') {
-      milestone()
-      echo "JUnit"
       // Run the maven build
       //bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore jenkins_test\pom.xml clean package/)
       bat(/"${mvnHome}\bin\mvn" -f jenkins_test\pom.xml clean package/)
       junit '**/target/surefire-reports/TEST-*.xml'
    }
    stage('PMD') {
-      milestone()
-      echo "PMD"
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
@@ -47,7 +46,7 @@ node{
 }
 
 node{
-   stage('Results') {
+   stage('Deploy') {
       milestone()
       echo "Result" 
       //junit '**/target/surefire-reports/TEST-*.xml'
