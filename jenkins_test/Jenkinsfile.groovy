@@ -8,6 +8,7 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'maven'
    }
+   
    stage('Build') {
    input 'Do you approve build?'
       // Run the maven build
@@ -18,14 +19,17 @@ node {
          bat(/"${mvnHome}\bin\mvn" -f jenkins_test\pom.xml -Dmaven.test.failure.ignore clean package/)
       }
    }
-   input 'Do you approve Junit & PMD?'
+   
    stage('Junit') {
+   input 'Do you approve Junit?'
       // Run the maven build
       //bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore jenkins_test\pom.xml clean package/)
       bat(/"${mvnHome}\bin\mvn" -f jenkins_test\pom.xml clean package/)
       junit '**/target/surefire-reports/TEST-*.xml'
    }
+   
    stage('PMD') {
+   input 'Do you approve PMD?'
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
@@ -34,8 +38,9 @@ node {
          bat(/"${mvnHome}\bin\mvn" -f jenkins_test\pom.xml -Dmaven.test.failure.ignore clean package pmd:pmd/)
       }
    }
-   input 'Do you approve Deploy?'   
+   
    stage('Deploy') {
+   input 'Do you approve Deploy?'   
       milestone()
       echo "Result" 
       //junit '**/target/surefire-reports/TEST-*.xml'
