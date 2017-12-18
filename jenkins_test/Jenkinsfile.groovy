@@ -12,8 +12,8 @@ node {
 }
 
 node {
-   stage 'deployment'
-   input 'Do you approve deployment?'
+   stage 'Build'
+   input 'Do you approve build?'
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
@@ -25,8 +25,6 @@ node {
    }
 }
 node{
-   stage 'Test'
-   input 'Do you approve Test?'
    stage('Junit') {
       milestone()
       echo "JUnit"
