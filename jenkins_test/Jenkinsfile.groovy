@@ -8,8 +8,8 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'maven'
    }
-   input 'Do you approve build?'
    stage('Build') {
+   input 'Do you approve build?'
       // Run the maven build
       if (isUnix()) {
          sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
