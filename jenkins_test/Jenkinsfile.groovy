@@ -11,7 +11,6 @@ node {
    }
 }
 
-stage 'Build'
 input 'Do you approve build?'
 node {
    stage('Build') {
@@ -25,7 +24,6 @@ node {
    }
 }
 
-stage 'Junit & PMD'
 input 'Do you approve Junit & PMD?'
 node{
    stage('Junit') {
@@ -45,6 +43,7 @@ node{
    }
 }
 
+input 'Do you approve Deploy?'
 node{
    stage('Deploy') {
       milestone()
