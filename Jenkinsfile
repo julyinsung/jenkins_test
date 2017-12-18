@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        git 'https://github.com/julyinsung/jenkins_test.git'
+        build 'gitHub2'
       }
     }
   }
