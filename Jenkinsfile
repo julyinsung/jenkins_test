@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        bat '/"${mvnHome}\\bin\\mvn" -f jenkins_test\\pom.xml clean package/'
+        bat '/"${mvnHome}\\bin\\mvn"  clean package/'
       }
     }
   }
