@@ -21,4 +21,15 @@ public class PipelineController {
 		return "hello/hello";
 		
 	}
+	
+	@RequestMapping("/bye")
+	public String bye(@RequestParam(value="name", required=false, defaultValue="Worlds") String name
+			,Model model){
+
+		User user = new User();
+		user.setName("mike");
+		model.addAttribute("user", user);
+		return "hello/hello";
+		
+	}
 }
