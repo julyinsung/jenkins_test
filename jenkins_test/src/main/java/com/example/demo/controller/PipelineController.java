@@ -32,4 +32,15 @@ public class PipelineController {
 		return "bye/bye";
 		
 	}
+	
+	@RequestMapping("/work")
+	public String work(@RequestParam(value="name", required=false, defaultValue="Worlds") String name
+			,Model model){
+
+		User user = new User();
+		user.setName("mike");
+		model.addAttribute("user", user);
+		return "work/work";
+		
+	}
 }
