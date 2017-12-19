@@ -2,7 +2,7 @@ def mvnHome
 node {
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git url: 'https://github.com/julyinsung/jenkins_test.git', tag: 'release_2.0'
+      git url: 'https://github.com/julyinsung/jenkins_test.git', tag: 'release_1.0'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
