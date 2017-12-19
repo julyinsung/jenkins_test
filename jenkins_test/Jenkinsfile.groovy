@@ -4,7 +4,6 @@ node {
       // Get some code from a GitHub repository
       //git url: 'https://github.com/julyinsung/jenkins_test.git', tag: 'release_1.0'
       checkout([$class: 'GitSCM', branches: [[name: 'refs/tags/release_1.0']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/julyinsung/jenkins_test.git']]])
-      
        
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
