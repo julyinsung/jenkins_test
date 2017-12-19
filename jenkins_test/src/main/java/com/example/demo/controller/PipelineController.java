@@ -29,7 +29,7 @@ public class PipelineController {
 		User user = new User();
 		user.setName("mike");
 		model.addAttribute("user", user);
-		return "hello/hello";
+		return "bye/bye";
 		
 	}
 }
