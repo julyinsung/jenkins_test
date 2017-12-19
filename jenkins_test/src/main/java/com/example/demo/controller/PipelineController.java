@@ -41,6 +41,16 @@ public class PipelineController {
 		user.setName("mike");
 		model.addAttribute("user", user);
 		return "work/work";
-		
+	}
+	
+
+	@RequestMapping("/run")
+	public String run(@RequestParam(value="name", required=false, defaultValue="Worlds") String name
+			,Model model){
+
+		User user = new User();
+		user.setName("mike");
+		model.addAttribute("user", user);
+		return "run/run";
 	}
 }
